@@ -22,13 +22,16 @@ public class CalcClient {
 	JFrame frame = new JFrame("Chatter");
     JTextField textField = new JTextField(40);
     JTextArea messageArea = new JTextArea(8, 40);
+    JTextArea namesArea = new JTextArea(8, 10);
     
     public CalcClient()
     {
     	textField.setEditable(false);
     	messageArea.setEditable(false);
+        namesArea.setEditable(false);
     	frame.getContentPane().add(textField, "North");
     	frame.getContentPane().add(new JScrollPane(messageArea), "Center");
+        frame.getContentPane().add(new JScrollPane(namesArea), "East");
     	frame.setSize(360, 480);
     	
     	textField.addActionListener(new ActionListener() {
@@ -76,6 +79,11 @@ public class CalcClient {
     		{
     			messageArea.append(line.substring(8)+"\n");
     		}
+                else if (line.startsWith("NAMES"))
+                {
+                    
+                        namesArea.append(line.substring(6)+"\n");
+                }
     	}
     }
 	
